@@ -95,6 +95,22 @@
 }
 
 /**
+ * Flexbox might have been more appropriate instead of grid, but the grid
+ * gap is appealing (instead of setting the gap on the buttons themselves).
+ * 1. Auto-generate columns for each button. Make sure the column is only
+ *    as wide as it needs.
+ * 2. Make sure buttons fill the grid column-first (as opposed to the
+ *    default row-first).
+ */
+
+.button-list {
+  display: grid;
+  grid-auto-columns: min-content; /* 1 */
+  grid-auto-flow: column; /* 2 */
+  grid-gap: 1em;
+}
+
+/**
  * 1. Set standard heading size and style.
  * 2. Remove top margin. Again a BEM violation, but it makes things easier
  *    to reason about. I might do the same for paragraphs.
