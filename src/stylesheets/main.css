@@ -1,0 +1,17 @@
+/**
+ * Make sure all elements have easy-to-reason-with widths and heights.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * 1. Kill the default thin margin around the page. Violates BEM but we
+ *    have no choice.
+ */
+
+.page {
+  font: 14px 'Roboto', sans-serif;
+  margin: 0; /* 1 */
+}

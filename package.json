@@ -1,0 +1,22 @@
+{
+  "name": "wetwest",
+  "version": "1.0.0",
+  "description": "A clone of the [Wetwest template](http://www.os-templates.com/free-website-templates/wetwest) from [OS Templates](www.os-templates.com).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.4.1",
+    "browser-sync": "^2.24.4",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}
