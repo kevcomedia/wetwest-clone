@@ -29,6 +29,24 @@
 }
 
 /**
+ * 1. Set a uniform semitransparent gradient on top of the usual background
+ *    image, giving it a slightly dimmed effect. Note that this will break
+ *    on browsers that don't support linear-gradient.
+ * 2. Center the background and size it just enough.
+ * 3. Make sure the text is visible.
+ */
+
+.row_background_road-night {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road-night.jpg'); /* 1 */
+  background-position: center; /* 2 */
+  background-repeat: no-repeat;
+  background-size: cover; /* 2 */
+  color: #fff; /* 3 */
+}
+
+/**
  * Place the row content at the center.
  */
 
