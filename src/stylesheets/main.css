@@ -95,6 +95,25 @@
 }
 
 /**
+ * button_inverse is just a button with the default and hover appearances
+ * swapped. It uses the same focus styles.
+ */
+
+.button_inverse {
+  background-color: transparent;
+  border: .0714em solid #fff;
+}
+
+.button_inverse:focus,
+.button_inverse:hover {
+  border-color: #0069a8;
+}
+
+.button_inverse:hover {
+  background-color: #0069a8;
+}
+
+/**
  * Flexbox might have been more appropriate instead of grid, but the grid
  * gap is appealing (instead of setting the gap on the buttons themselves).
  * 1. Auto-generate columns for each button. Make sure the column is only
