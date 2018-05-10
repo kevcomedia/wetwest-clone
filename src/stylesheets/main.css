@@ -53,3 +53,14 @@
 .row__content {
   grid-area: content;
 }
+
+/**
+ * 1. Set standard heading size and style.
+ * 2. Remove top margin. Again a BEM violation, but it makes things easier
+ *    to reason about. I might do the same for paragraphs.
+ */
+
+.heading {
+  font: italic 1.5714em serif;
+  margin-top: 0;
+}
