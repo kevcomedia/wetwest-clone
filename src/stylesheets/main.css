@@ -68,3 +68,12 @@
   font: italic 1.5714em serif;
   margin-top: 0;
 }
+
+/**
+ * 1. Top and bottom padding for the jumbotron itself.
+ */
+
+.jumbotron {
+  padding-bottom: 5em; /* 1 */
+  padding-top: 5em; /* 1 */
+}
