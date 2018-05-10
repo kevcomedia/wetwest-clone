@@ -21,11 +21,15 @@
  *    column will take up the most space until it's around 70em wide. After
  *    that point the gutters will expand to take the remaining space.
  * 2. Name the grid areas for convenience.
+ * 3. Top and bottom padding for the row. Not grid rows as that might mess
+ *    up the layout when the row has more than one elements in it.
  */
 .row {
   display: grid;
   grid-template-areas: "left-gutter content right-gutter"; /* 2 */
   grid-template-columns: minmax(1.1429em, 1fr) minmax(0, 69.8571em) minmax(1.1429em, 1fr); /* 1 */
+  padding-bottom: 5.7143em;
+  padding-top: 5.7143em;
 }
 
 /**
