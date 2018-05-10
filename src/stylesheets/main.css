@@ -15,3 +15,23 @@
   font: 14px 'Roboto', sans-serif;
   margin: 0; /* 1 */
 }
+
+/**
+ * 1. Set up the row so it has gutters at least 1.1429em wide. The center
+ *    column will take up the most space until it's around 70em wide. After
+ *    that point the gutters will expand to take the remaining space.
+ * 2. Name the grid areas for convenience.
+ */
+.row {
+  display: grid;
+  grid-template-areas: "left-gutter content right-gutter"; /* 2 */
+  grid-template-columns: minmax(1.1429em, 1fr) minmax(0, 69.8571em) minmax(1.1429em, 1fr); /* 1 */
+}
+
+/**
+ * Place the row content at the center.
+ */
+
+.row__content {
+  grid-area: content;
+}
