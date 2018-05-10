@@ -65,6 +65,36 @@
 /* COMMON BLOCKS */
 
 /**
+ * 1. Inline-block makes sense for a button.
+ * 2. Transition colors on hover/focus.
+ * 3. A nice blue color.
+ */
+
+.button {
+  background-color: #0069a8; /* 3 */
+  border: 0.0714em solid #0069a8; /* 3 */
+  color: #fff;
+  display: inline-block; /* 1 */
+  padding: .8em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all ease-in .2s; /* 2 */
+}
+
+.button:focus,
+.button:hover {
+  background-color: transparent;
+}
+
+/**
+ * Hovering changes border color to white. Focusing keeps the blue border.
+ */
+
+.button:hover {
+  border-color: #fff;
+}
+
+/**
  * 1. Set standard heading size and style.
  * 2. Remove top margin. Again a BEM violation, but it makes things easier
  *    to reason about. I might do the same for paragraphs.
