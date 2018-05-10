@@ -1,3 +1,6 @@
+
+/* LAYOUT */
+
 /**
  * Make sure all elements have easy-to-reason-with widths and heights.
  */
@@ -58,6 +61,9 @@
   grid-area: content;
 }
 
+
+/* COMMON BLOCKS */
+
 /**
  * 1. Set standard heading size and style.
  * 2. Remove top margin. Again a BEM violation, but it makes things easier
@@ -68,6 +74,9 @@
   font: italic 1.5714em serif;
   margin-top: 0;
 }
+
+
+/* FEATURE BLOCKS (for the lack of a better term) */
 
 /**
  * 1. Top and bottom padding for the jumbotron itself.
