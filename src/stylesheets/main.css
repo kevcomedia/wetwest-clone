@@ -167,3 +167,20 @@
   padding-bottom: 5em; /* 1 */
   padding-top: 5em; /* 1 */
 }
+
+/**
+ * Some bottom margin for the title. Though it's just 1em, its font size
+ * is expected to be pretty large anyway.
+ */
+
+.jumbotron__title {
+  margin-bottom: 1em;
+}
+
+/**
+ * Bottom margin for the tagline.
+ */
+
+.jumbotron__tagline {
+  margin-bottom: 5em;
+}
