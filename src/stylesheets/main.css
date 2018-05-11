@@ -23,16 +23,22 @@
  * 1. Set up the row so it has gutters at least 1.1429em wide. The center
  *    column will take up the most space until it's around 70em wide. After
  *    that point the gutters will expand to take the remaining space.
- * 2. Name the grid areas for convenience.
- * 3. Top and bottom padding for the row. Not grid rows as that might mess
- *    up the layout when the row has more than one elements in it.
+ * 2. Name the grid column lines for convenience.
+ * 3. Top and bottom padding for the row instead of empty grid rows as they
+ *    might mess up the layout when the row has more than one elements in
+ *    it.
+ * 4. Gaps between any section the row might contain.
  */
 .row {
   display: grid;
-  grid-template-areas: "left-gutter content right-gutter"; /* 2 */
-  grid-template-columns: minmax(1.1429em, 1fr) minmax(0, 69.8571em) minmax(1.1429em, 1fr); /* 1 */
-  padding-bottom: 5.7143em;
-  padding-top: 5.7143em;
+  grid-template-columns:
+    [full-start] minmax(1.1429em, 1fr)
+    [content-start] minmax(0, 69.8571em)
+    [content-end] minmax(1.1429em, 1fr)
+    [full-end]; /* 1, 2 */
+  grid-row-gap: 5.7143em; /* 4 */
+  padding-bottom: 5.7143em; /* 3 */
+  padding-top: 5.7143em; /* 3 */
 }
 
 /**
@@ -54,15 +60,72 @@
 }
 
 /**
- * Place the row content at the center.
+ * Place the row elements at the center.
  */
 
+.row__header,
 .row__content {
-  grid-area: content;
+  grid-column: content-start / content-end;
+}
+
+/**
+ * Quick implementation of the ever-present 12-column grid. For now it's
+ * only a one-breakpoint system.
+ */
+
+.grid {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/**
+ * Any grid item should span the entire grid by default
+ * (i.e., mobile-first).
+ */
+
+.grid__item_col_1-2,
+.grid__item_col_1-4,
+.grid__item_col_3-4 {
+  grid-column: auto / span 12;
+}
+
+/**
+ * 1. Note to self: em units in media queries use the browser's font size
+ *    setting, not any font size on the page (usually 16px by default;
+ *    so below triggers around at least 750px).
+ */
+
+@media screen and (min-width: 46.875em) { /* 1 */
+  .grid__item_col_1-2 {
+    grid-column: auto / span 6;
+  }
+
+  .grid__item_col_1-4 {
+    grid-column: auto / span 3;
+  }
+
+  .grid__item_col_3-4 {
+    grid-column: auto / span 9;
+  }
 }
 
 
 /* COMMON BLOCKS */
+
+/**
+ * Images for display purposes.
+ * 1. Maintain image aspect ratio.
+ * 2. Horizontally center image in its container.
+ * 3. The image can only get as large as its actual width.
+ */
+
+.block-image {
+  display: block;
+  height: auto; /* 1 */
+  margin: auto; /* 2 */
+  max-width: 100%; /* 3 */
+}
 
 /**
  * 1. Inline-block makes sense for a button.
@@ -154,6 +217,14 @@
 
 .heading_size_xl {
   font-size: 2.8571em;
+}
+
+/**
+ * Paragraphs and such.
+ */
+
+.prose {
+  margin-top: 0;
 }
 
 
