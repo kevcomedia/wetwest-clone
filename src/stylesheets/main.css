@@ -1,0 +1,186 @@
+
+/* LAYOUT */
+
+/**
+ * Make sure all elements have easy-to-reason-with widths and heights.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * 1. Kill the default thin margin around the page. Violates BEM but we
+ *    have no choice.
+ */
+
+.page {
+  font: 14px 'Roboto', sans-serif;
+  margin: 0; /* 1 */
+}
+
+/**
+ * 1. Set up the row so it has gutters at least 1.1429em wide. The center
+ *    column will take up the most space until it's around 70em wide. After
+ *    that point the gutters will expand to take the remaining space.
+ * 2. Name the grid areas for convenience.
+ * 3. Top and bottom padding for the row. Not grid rows as that might mess
+ *    up the layout when the row has more than one elements in it.
+ */
+.row {
+  display: grid;
+  grid-template-areas: "left-gutter content right-gutter"; /* 2 */
+  grid-template-columns: minmax(1.1429em, 1fr) minmax(0, 69.8571em) minmax(1.1429em, 1fr); /* 1 */
+  padding-bottom: 5.7143em;
+  padding-top: 5.7143em;
+}
+
+/**
+ * 1. Set a uniform semitransparent gradient on top of the usual background
+ *    image, giving it a slightly dimmed effect. Note that this will break
+ *    on browsers that don't support linear-gradient.
+ * 2. Center the background and size it just enough.
+ * 3. Make sure the text is visible.
+ */
+
+.row_background_road-night {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road-night.jpg'); /* 1 */
+  background-position: center; /* 2 */
+  background-repeat: no-repeat;
+  background-size: cover; /* 2 */
+  color: #fff; /* 3 */
+}
+
+/**
+ * Place the row content at the center.
+ */
+
+.row__content {
+  grid-area: content;
+}
+
+
+/* COMMON BLOCKS */
+
+/**
+ * 1. Inline-block makes sense for a button.
+ * 2. Transition colors on hover/focus.
+ * 3. A nice blue color.
+ */
+
+.button {
+  background-color: #0069a8; /* 3 */
+  border: 0.0714em solid #0069a8; /* 3 */
+  color: #fff;
+  display: inline-block; /* 1 */
+  padding: .8em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all ease-in .2s; /* 2 */
+}
+
+.button:focus,
+.button:hover {
+  background-color: transparent;
+}
+
+/**
+ * Hovering changes border color to white. Focusing keeps the blue border.
+ */
+
+.button:hover {
+  border-color: #fff;
+}
+
+/**
+ * button_inverse is just a button with the default and hover appearances
+ * swapped. It uses the same focus styles.
+ */
+
+.button_inverse {
+  background-color: transparent;
+  border: .0714em solid #fff;
+}
+
+.button_inverse:focus,
+.button_inverse:hover {
+  border-color: #0069a8;
+}
+
+.button_inverse:hover {
+  background-color: #0069a8;
+}
+
+/**
+ * Flexbox might have been more appropriate instead of grid, but the grid
+ * gap is appealing (instead of setting the gap on the buttons themselves).
+ * 1. Auto-generate columns for each button. Make sure the column is only
+ *    as wide as it needs.
+ * 2. Make sure buttons fill the grid column-first (as opposed to the
+ *    default row-first).
+ */
+
+.button-list {
+  display: grid;
+  grid-auto-columns: min-content; /* 1 */
+  grid-auto-flow: column; /* 2 */
+  grid-gap: 1em;
+}
+
+/**
+ * 1. Set standard heading size and style.
+ * 2. Remove top margin. Again a BEM violation, but it makes things easier
+ *    to reason about. I might do the same for paragraphs.
+ */
+
+.heading {
+  font: italic 1.5714em serif;
+  margin-top: 0;
+}
+
+.heading_size_xs {
+  font-size: 1.2em;
+}
+
+.heading_size_s {
+  font-size: 1.2857em;
+}
+
+.heading_size_l {
+  font-size: 1.8571em;
+}
+
+.heading_size_xl {
+  font-size: 2.8571em;
+}
+
+
+/* FEATURE BLOCKS (for the lack of a better term) */
+
+/**
+ * 1. Top and bottom padding for the jumbotron itself.
+ */
+
+.jumbotron {
+  padding-bottom: 5em; /* 1 */
+  padding-top: 5em; /* 1 */
+}
+
+/**
+ * Some bottom margin for the title. Though it's just 1em, its font size
+ * is expected to be pretty large anyway.
+ */
+
+.jumbotron__title {
+  margin-bottom: 1em;
+}
+
+/**
+ * Bottom margin for the tagline.
+ */
+
+.jumbotron__tagline {
+  margin-bottom: 5em;
+}
