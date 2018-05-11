@@ -68,6 +68,43 @@
   grid-column: content-start / content-end;
 }
 
+/**
+ * Quick implementation of the ever-present 12-column grid. For now it's
+ * only a one-breakpoint system.
+ */
+
+.grid {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/**
+ * Any grid item should span the entire grid by default
+ * (i.e., mobile-first).
+ */
+
+.grid__item_col_1-4,
+.grid__item_col_3-4 {
+  grid-column: auto / span 12;
+}
+
+/**
+ * 1. Note to self: em units in media queries use the browser's font size
+ *    setting, not any font size on the page (usually 16px by default;
+ *    so below triggers around at least 750px).
+ */
+
+@media screen and (min-width: 46.875em) { /* 1 */
+  .grid__item_col_1-4 {
+    grid-column: auto / span 3;
+  }
+
+  .grid__item_col_3-4 {
+    grid-column: auto / span 9;
+  }
+}
+
 
 /* COMMON BLOCKS */
 
