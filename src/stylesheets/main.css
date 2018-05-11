@@ -84,6 +84,7 @@
  * (i.e., mobile-first).
  */
 
+.grid__item_col_1-2,
 .grid__item_col_1-4,
 .grid__item_col_3-4 {
   grid-column: auto / span 12;
@@ -96,6 +97,10 @@
  */
 
 @media screen and (min-width: 46.875em) { /* 1 */
+  .grid__item_col_1-2 {
+    grid-column: auto / span 6;
+  }
+
   .grid__item_col_1-4 {
     grid-column: auto / span 3;
   }
@@ -107,6 +112,20 @@
 
 
 /* COMMON BLOCKS */
+
+/**
+ * Images for display purposes.
+ * 1. Maintain image aspect ratio.
+ * 2. Horizontally center image in its container.
+ * 3. The image can only get as large as its actual width.
+ */
+
+.block-image {
+  display: block;
+  height: auto; /* 1 */
+  margin: auto; /* 2 */
+  max-width: 100%; /* 3 */
+}
 
 /**
  * 1. Inline-block makes sense for a button.
