@@ -140,6 +140,22 @@
   margin-top: 0;
 }
 
+.heading_size_xs {
+  font-size: 1.2em;
+}
+
+.heading_size_s {
+  font-size: 1.2857em;
+}
+
+.heading_size_l {
+  font-size: 1.8571em;
+}
+
+.heading_size_xl {
+  font-size: 2.8571em;
+}
+
 
 /* FEATURE BLOCKS (for the lack of a better term) */
 
