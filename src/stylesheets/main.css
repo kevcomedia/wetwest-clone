@@ -261,6 +261,15 @@
 }
 
 /**
+ * Standard (non-button-looking) link styles.
+ */
+
+.link {
+  color: #0069a8;
+  text-decoration: none;
+}
+
+/**
  * Paragraphs and such.
  */
 
