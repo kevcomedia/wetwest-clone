@@ -42,11 +42,34 @@
 }
 
 /**
+ * 1. Make text legible on rows with a background.
+ * 2. Scale the background as needed.
+ */
+
+.row_background_road,
+.row_background_road-night {
+  background-repeat: no-repeat;
+  background-size: cover; /* 2 */
+  color: #fff; /* 1 */
+}
+
+/**
  * 1. Set a uniform semitransparent gradient on top of the usual background
  *    image, giving it a slightly dimmed effect. Note that this will break
  *    on browsers that don't support linear-gradient.
+ * 2. The more prominent parts of the image are at the bottom.
+ */
+
+.row_background_road {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road.jpg'); /* 1 */
+  background-position: bottom; /* 2 */
+}
+
+/**
+ * 1. Same as above.
  * 2. Center the background and size it just enough.
- * 3. Make sure the text is visible.
  */
 
 .row_background_road-night {
@@ -54,9 +77,6 @@
     linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
     url('../images/road-night.jpg'); /* 1 */
   background-position: center; /* 2 */
-  background-repeat: no-repeat;
-  background-size: cover; /* 2 */
-  color: #fff; /* 3 */
 }
 
 /**
