@@ -168,6 +168,15 @@
   transition: all ease-in .2s; /* 2 */
 }
 
+/**
+ * A variation of the button with some top margin. I don't know if a modifier
+ * can change a block's margin in BEM.
+ */
+
+.button_top-margin {
+  margin-top: 1em;
+}
+
 .button:focus,
 .button:hover {
   background-color: transparent;
