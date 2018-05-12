@@ -88,6 +88,10 @@
   grid-column: content-start / content-end;
 }
 
+.row__content_centered {
+  text-align: center;
+}
+
 /**
  * Quick implementation of the ever-present 12-column grid. For now it's
  * only a one-breakpoint system.
@@ -216,11 +220,13 @@
  * 1. Set standard heading size and style.
  * 2. Remove top margin. Again a BEM violation, but it makes things easier
  *    to reason about. I might do the same for paragraphs.
+ * 3. I realized the headings also don't have bottom margins.
  */
 
 .heading {
-  font: italic 1.5714em serif;
-  margin-top: 0;
+  font: italic 1.5714em serif; /* 1 */
+  margin-bottom: 0; /* 3 */
+  margin-top: 0; /* 2 */
 }
 
 .heading_size_xs {
@@ -260,11 +266,11 @@
 }
 
 /**
- * Some bottom margin for the title. Though it's just 1em, its font size
- * is expected to be pretty large anyway.
+ * Some bottom margin for the jumbotron title and subtitle.
  */
 
-.jumbotron__title {
+.jumbotron__title,
+.jumbotron__subtitle {
   margin-bottom: 1em;
 }
 
