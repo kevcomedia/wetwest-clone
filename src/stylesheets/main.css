@@ -312,6 +312,18 @@
 }
 
 /**
+ * 1. Content can only get as large as the cover image (though this assumes
+ *    the cover image is around 320px wide. It will probably break when the
+ *    page's font-size is changed).
+ * 2. Center the content horizontally.
+ */
+
+.post__content {
+  margin: auto; /* 2 */
+  max-width: 22.8751em; /* 1 */
+}
+
+/**
  * Some space between it and post links below.
  */
 
