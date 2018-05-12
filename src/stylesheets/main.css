@@ -88,6 +88,7 @@
   grid-column: content-start / content-end;
 }
 
+.row__header_centered,
 .row__content_centered {
   text-align: center;
 }
