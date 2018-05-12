@@ -88,6 +88,7 @@
   grid-column: content-start / content-end;
 }
 
+.row__header_centered,
 .row__content_centered {
   text-align: center;
 }
@@ -109,6 +110,7 @@
  */
 
 .grid__item_col_1-2,
+.grid__item_col_1-3,
 .grid__item_col_1-4,
 .grid__item_col_3-4 {
   grid-column: auto / span 12;
@@ -123,6 +125,10 @@
 @media screen and (min-width: 46.875em) { /* 1 */
   .grid__item_col_1-2 {
     grid-column: auto / span 6;
+  }
+
+  .grid__item_col_1-3 {
+    grid-column: auto / span 4;
   }
 
   .grid__item_col_1-4 {
@@ -255,10 +261,20 @@
 }
 
 /**
+ * Standard (non-button-looking) link styles.
+ */
+
+.link {
+  color: #0069a8;
+  text-decoration: none;
+}
+
+/**
  * Paragraphs and such.
  */
 
 .prose {
+  line-height: 1.5em;
   margin-top: 0;
 }
 
@@ -289,4 +305,38 @@
 
 .jumbotron__tagline {
   margin-bottom: 5em;
+}
+
+.post__cover {
+  margin-bottom: 2em;
+}
+
+/**
+ * 1. Content can only get as large as the cover image (though this assumes
+ *    the cover image is around 320px wide. It will probably break when the
+ *    page's font-size is changed).
+ * 2. Center the content horizontally.
+ */
+
+.post__content {
+  margin: auto; /* 2 */
+  max-width: 22.8751em; /* 1 */
+}
+
+/**
+ * Some space between it and post links below.
+ */
+
+.post__title {
+  margin-bottom: .25em;
+}
+
+/**
+ * 1. Post link text is slightly smaller.
+ * 2. Some space between it and the post text below.
+ */
+
+.post__links {
+  font-size: .8em; /* 1 */
+  margin-bottom: 1.2em; /* 2 */
 }
