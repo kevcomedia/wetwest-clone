@@ -42,11 +42,34 @@
 }
 
 /**
+ * 1. Make text legible on rows with a background.
+ * 2. Scale the background as needed.
+ */
+
+.row_background_road,
+.row_background_road-night {
+  background-repeat: no-repeat;
+  background-size: cover; /* 2 */
+  color: #fff; /* 1 */
+}
+
+/**
  * 1. Set a uniform semitransparent gradient on top of the usual background
  *    image, giving it a slightly dimmed effect. Note that this will break
  *    on browsers that don't support linear-gradient.
+ * 2. The more prominent parts of the image are at the bottom.
+ */
+
+.row_background_road {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road.jpg'); /* 1 */
+  background-position: bottom; /* 2 */
+}
+
+/**
+ * 1. Same as above.
  * 2. Center the background and size it just enough.
- * 3. Make sure the text is visible.
  */
 
 .row_background_road-night {
@@ -54,9 +77,6 @@
     linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
     url('../images/road-night.jpg'); /* 1 */
   background-position: center; /* 2 */
-  background-repeat: no-repeat;
-  background-size: cover; /* 2 */
-  color: #fff; /* 3 */
 }
 
 /**
@@ -66,6 +86,10 @@
 .row__header,
 .row__content {
   grid-column: content-start / content-end;
+}
+
+.row__content_centered {
+  text-align: center;
 }
 
 /**
@@ -144,6 +168,15 @@
   transition: all ease-in .2s; /* 2 */
 }
 
+/**
+ * A variation of the button with some top margin. I don't know if a modifier
+ * can change a block's margin in BEM.
+ */
+
+.button_top-margin {
+  margin-top: 1em;
+}
+
 .button:focus,
 .button:hover {
   background-color: transparent;
@@ -196,11 +229,13 @@
  * 1. Set standard heading size and style.
  * 2. Remove top margin. Again a BEM violation, but it makes things easier
  *    to reason about. I might do the same for paragraphs.
+ * 3. I realized the headings also don't have bottom margins.
  */
 
 .heading {
-  font: italic 1.5714em serif;
-  margin-top: 0;
+  font: italic 1.5714em serif; /* 1 */
+  margin-bottom: 0; /* 3 */
+  margin-top: 0; /* 2 */
 }
 
 .heading_size_xs {
@@ -240,11 +275,11 @@
 }
 
 /**
- * Some bottom margin for the title. Though it's just 1em, its font size
- * is expected to be pretty large anyway.
+ * Some bottom margin for the jumbotron title and subtitle.
  */
 
-.jumbotron__title {
+.jumbotron__title,
+.jumbotron__subtitle {
   margin-bottom: 1em;
 }
 
