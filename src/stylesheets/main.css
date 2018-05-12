@@ -110,6 +110,7 @@
  */
 
 .grid__item_col_1-2,
+.grid__item_col_1-3,
 .grid__item_col_1-4,
 .grid__item_col_3-4 {
   grid-column: auto / span 12;
@@ -124,6 +125,10 @@
 @media screen and (min-width: 46.875em) { /* 1 */
   .grid__item_col_1-2 {
     grid-column: auto / span 6;
+  }
+
+  .grid__item_col_1-3 {
+    grid-column: auto / span 4;
   }
 
   .grid__item_col_1-4 {
