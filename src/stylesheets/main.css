@@ -301,3 +301,21 @@
 .post__cover {
   margin-bottom: 2em;
 }
+
+/**
+ * Some space between it and post links below.
+ */
+
+.post__title {
+  margin-bottom: .25em;
+}
+
+/**
+ * 1. Post link text is slightly smaller.
+ * 2. Some space between it and the post text below.
+ */
+
+.post__links {
+  font-size: .8em; /* 1 */
+  margin-bottom: 1.2em; /* 2 */
+}
