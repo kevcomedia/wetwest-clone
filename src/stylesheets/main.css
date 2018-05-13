@@ -183,17 +183,24 @@
   margin-top: 1em;
 }
 
+/**
+ * 1. Focused and hovered buttons are transparent.
+ * 2. Text color becomes the same as default text color.
+ */
+
 .button:focus,
 .button:hover {
-  background-color: transparent;
+  background-color: transparent; /* 1 */
+  color: #474747; /* 2 */
 }
 
 /**
- * Hovering changes border color to white. Focusing keeps the blue border.
+ * Hovering changes border color to the text color. Focusing
+ * keeps the blue border.
  */
 
 .button:hover {
-  border-color: #fff;
+  border-color: #474747;
 }
 
 /**
@@ -206,9 +213,26 @@
   border: .0714em solid #fff;
 }
 
+/**
+ * button_on-background is for a button that is used in a row with
+ * background images. Their hover state makes them white for legibility.
+ */
+
 .button_inverse:focus,
-.button_inverse:hover {
+.button_inverse:hover,
+.button_on-background:focus,
+.button_on-background:hover {
+  color: #fff;
+}
+
+.button_inverse:focus,
+.button_inverse:hover,
+.button_on-background:focus {
   border-color: #0069a8;
+}
+
+.button_on-background:hover {
+  border-color: #fff;
 }
 
 .button_inverse:hover {
