@@ -183,17 +183,24 @@
   margin-top: 1em;
 }
 
+/**
+ * 1. Focused and hovered buttons are transparent.
+ * 2. Text color becomes the same as default text color.
+ */
+
 .button:focus,
 .button:hover {
-  background-color: transparent;
+  background-color: transparent; /* 1 */
+  color: #474747; /* 2 */
 }
 
 /**
- * Hovering changes border color to white. Focusing keeps the blue border.
+ * Hovering changes border color to the text color. Focusing
+ * keeps the blue border.
  */
 
 .button:hover {
-  border-color: #fff;
+  border-color: #474747;
 }
 
 /**
