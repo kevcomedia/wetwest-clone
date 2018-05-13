@@ -42,6 +42,15 @@
 }
 
 /**
+ * Row with 3/5 the usual padding.
+ */
+
+.row_padding_narrow {
+  padding-bottom: 3.4286em;
+  padding-top: 3.4286em;
+}
+
+/**
  * Scale the background as needed.
  */
 
