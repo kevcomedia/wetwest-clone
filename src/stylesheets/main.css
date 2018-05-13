@@ -42,15 +42,32 @@
 }
 
 /**
- * 1. Make text legible on rows with a background.
- * 2. Scale the background as needed.
+ * Row with 3/5 the usual padding.
+ */
+
+.row_padding_narrow {
+  padding-bottom: 3.4286em;
+  padding-top: 3.4286em;
+}
+
+/**
+ * Scale the background as needed.
+ */
+
+.row_background_road,
+.row_background_road-night,
+.row_background_light {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/**
+ * Make text legible on rows with dark backgrounds.
  */
 
 .row_background_road,
 .row_background_road-night {
-  background-repeat: no-repeat;
-  background-size: cover; /* 2 */
-  color: #fff; /* 1 */
+  color: #fff;
 }
 
 /**
@@ -77,6 +94,17 @@
     linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
     url('../images/road-night.jpg'); /* 1 */
   background-position: center; /* 2 */
+}
+
+/**
+ * 1. Again same as above, but give a light effect.
+ */
+
+.row_background_light {
+  background-image:
+    linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
+    url('../images/architecture.jpg'); /* 1 */
+  background-position: bottom;
 }
 
 /**
@@ -300,6 +328,15 @@
 .prose {
   line-height: 1.5em;
   margin-top: 0;
+}
+
+/**
+ * Container where contents are vertically centered
+ */
+
+.vertically-centered {
+  align-items: center;
+  display: flex;
 }
 
 
