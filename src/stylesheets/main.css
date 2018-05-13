@@ -330,6 +330,15 @@
   margin-top: 0;
 }
 
+/**
+ * Container where contents are vertically centered
+ */
+
+.vertically-centered {
+  align-items: center;
+  display: flex;
+}
+
 
 /* FEATURE BLOCKS (for the lack of a better term) */
 
