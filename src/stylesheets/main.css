@@ -213,9 +213,26 @@
   border: .0714em solid #fff;
 }
 
+/**
+ * button_on-background is for a button that is used in a row with
+ * background images. Their hover state makes them white for legibility.
+ */
+
 .button_inverse:focus,
-.button_inverse:hover {
+.button_inverse:hover,
+.button_on-background:focus,
+.button_on-background:hover {
+  color: #fff;
+}
+
+.button_inverse:focus,
+.button_inverse:hover,
+.button_on-background:focus {
   border-color: #0069a8;
+}
+
+.button_on-background:hover {
+  border-color: #fff;
 }
 
 .button_inverse:hover {
