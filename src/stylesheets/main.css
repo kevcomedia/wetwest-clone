@@ -452,3 +452,11 @@
   font-size: .8em; /* 1 */
   margin-bottom: 1.2em; /* 2 */
 }
+
+/**
+ * The footer headings have some bottom margin.
+ */
+
+.footer__heading {
+  margin-bottom: 2em;
+}
