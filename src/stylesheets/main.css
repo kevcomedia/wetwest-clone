@@ -339,6 +339,35 @@
   display: flex;
 }
 
+/**
+ * Unbulleted unordered list with borders between list items.
+ * 1. Kill default left padding.
+ * 2. Make sure list has no bullets.
+ */
+
+.list {
+  list-style-type: none; /* 2 */
+  padding-left: 0; /* 1 */
+}
+
+/**
+ * 1. Border between list items.
+ * 2. Vertical padding between items, but no side padding.
+ */
+
+.list__item {
+  border-bottom: .0714em solid #333; /* 1 */
+  padding: 1em 0; /* 2 */
+}
+
+/**
+ * The last list item should have no bottom border.
+ */
+
+.list__item:last-child {
+  border-bottom: unset;
+}
+
 
 /* FEATURE BLOCKS (for the lack of a better term) */
 
