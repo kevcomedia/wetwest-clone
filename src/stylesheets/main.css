@@ -268,6 +268,69 @@
 }
 
 /**
+ * Social media buttons.
+ * 1. Make the button appear as square as possible.
+ * 2. Dark background color.
+ */
+
+.button_social_dribbble,
+.button_social_facebook,
+.button_social_linkedin,
+.button_social_twitter {
+  background-color: #333; /* 2 */
+  border-color: #333; /* 2 */
+  padding: .5em .4em; /* 1 */
+}
+
+/**
+ * On focus, their background just go transparent.
+ */
+
+.button_social_dribbble:focus,
+.button_social_facebook:focus,
+.button_social_linkedin:focus,
+.button_social_twitter:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+
+/**
+ * Social media buttons appear white on hover.
+ */
+
+.button_social_dribbble:hover,
+.button_social_facebook:hover,
+.button_social_linkedin:hover,
+.button_social_twitter:hover {
+  color: #fff;
+}
+
+/**
+ * Their background colors match their brands' respective colors.
+ */
+
+.button_social_dribbble:hover {
+  background-color: #ea4c89;
+  border-color: #ea4c89;
+}
+
+.button_social_facebook:hover {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.button_social_linkedin:hover {
+  background-color: #0e76a8;
+  border-color: #0e76a8;
+}
+
+.button_social_twitter:hover {
+  background-color: #00acee;
+  border-color: #00acee;
+}
+
+/**
  * Flexbox might have been more appropriate instead of grid, but the grid
  * gap is appealing (instead of setting the gap on the buttons themselves).
  * 1. Auto-generate columns for each button. Make sure the column is only
