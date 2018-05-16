@@ -539,11 +539,22 @@ html {
 }
 
 /**
- * The footer headings have some bottom margin.
+ * 1. The footer has a dark background.
+ * 2. Whitish text color.
+ */
+
+.footer {
+  background-color: #1a1a1a; /* 1 */
+  color: #bcbcbc; /* 2 */
+}
+
+/**
+ * 1. The footer headings have some bottom margin.
  */
 
 .footer__heading {
-  margin-bottom: 2em;
+  color: #fff;
+  margin-bottom: 2em; /* 1 */
 }
 
 /**
