@@ -23,6 +23,7 @@ html {
  */
 
 .page {
+  color: #474747;
   font: 1em/1.6em 'Roboto', sans-serif;
   margin: 0; /* 1 */
 }
@@ -118,7 +119,7 @@ html {
 
 .row_background_light {
   background-image:
-    linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
+    linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
     url('../images/architecture.jpg'); /* 1 */
   background-position: bottom;
 }
@@ -417,7 +418,7 @@ html {
  */
 
 .heading {
-  font: italic 1.5714em serif; /* 1 */
+  font: italic 1.5714em Georgia, 'Times New Roman', serif; /* 1 */
   margin-bottom: 0; /* 3 */
   margin-top: 0; /* 2 */
 }
