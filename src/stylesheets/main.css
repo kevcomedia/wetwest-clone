@@ -50,6 +50,14 @@ html {
 }
 
 /**
+ * Row with reduced grid gaps.
+ */
+
+.row_gap_narrow {
+  grid-row-gap: 1.4286em;
+}
+
+/**
  * Row with 3/5 the usual padding.
  */
 
@@ -130,6 +138,28 @@ html {
 }
 
 /**
+ * full-width makes the row item occupy the entirety of the row's width.
+ * That said, we'd like its contents to align with regular row content.
+ * 1. Inherit the row's display properties.
+ * 2. Span the entirety of the row's width.
+ */
+
+.row__footer_full-width {
+  display: inherit; /* 1 */
+  grid-column: full; /* 2 */
+  grid-template-columns: inherit; /* 1 */
+}
+
+/**
+ * Anything inside the full-width content must be placed in the contents
+ * column (to align with the usual row contents).
+ */
+
+.row__footer_full-width > * {
+  grid-column: content;
+}
+
+/**
  * Quick implementation of the ever-present 12-column grid. For now it's
  * only a one-breakpoint system.
  */
@@ -176,6 +206,16 @@ html {
   }
 }
 
+/**
+ * Block for a container that might have two elements, on each far end
+ * of the container.
+ */
+
+.space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 /* COMMON BLOCKS */
 
@@ -416,6 +456,15 @@ html {
 }
 
 /**
+ * Links that use the same color as its parent element. Probably not a good
+ * idea in general.
+ */
+
+.link_blend {
+  color: inherit;
+}
+
+/**
  * Paragraphs and such.
  */
 
@@ -550,11 +599,13 @@ html {
 /**
  * 1. The footer has a dark background.
  * 2. Whitish text color.
+ * 3. Flush the footer content at the bottom of the page.
  */
 
 .footer {
   background-color: #1a1a1a; /* 1 */
   color: #bcbcbc; /* 2 */
+  padding-bottom: 0; /* 3 */
 }
 
 /**
@@ -564,6 +615,26 @@ html {
 .footer__heading {
   color: #fff;
   margin-bottom: 2em; /* 1 */
+}
+
+/**
+ * 1. Slightly ligher background color than footer.
+ */
+
+.footer__copywrite-banner {
+  background-color: #222; /* 1 */
+  color: #bcbcbc;
+  padding-bottom: 1.4286em;
+  padding-top: 1.4286em;
+}
+
+/**
+ * Kill copywrite banner text margins.
+ */
+
+.footer__copywrite,
+.footer__attribution {
+  margin: 0;
 }
 
 /**
