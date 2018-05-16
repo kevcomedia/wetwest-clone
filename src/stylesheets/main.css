@@ -1,4 +1,12 @@
 
+/**
+ * Specify page-wide font size.
+ */
+
+html {
+  font-size: 14px;
+}
+
 /* LAYOUT */
 
 /**
@@ -15,7 +23,7 @@
  */
 
 .page {
-  font: 14px 'Roboto', sans-serif;
+  font: 1em 'Roboto', sans-serif;
   margin: 0; /* 1 */
 }
 
@@ -536,4 +544,22 @@
 
 .footer__heading {
   margin-bottom: 2em;
+}
+
+/**
+ * The contact form uses the root font-size. This is mostly for the input
+ * elements to inherit.
+ */
+
+.contact-form {
+  font-size: 1em;
+}
+
+/**
+ * Input elements inherit the form's font size.
+ */
+
+.contact-form__input,
+.contact-form__submit {
+  font-size: inherit;
 }
