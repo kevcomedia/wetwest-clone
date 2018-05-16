@@ -621,7 +621,7 @@ html {
  * 1. Slightly ligher background color than footer.
  */
 
-.footer__copywrite-banner {
+.footer__copyright-banner {
   background-color: #222; /* 1 */
   color: #bcbcbc;
   padding-bottom: 1.4286em;
@@ -629,10 +629,10 @@ html {
 }
 
 /**
- * Kill copywrite banner text margins.
+ * Kill copyright banner text margins.
  */
 
-.footer__copywrite,
+.footer__copyright,
 .footer__attribution {
   margin: 0;
 }
