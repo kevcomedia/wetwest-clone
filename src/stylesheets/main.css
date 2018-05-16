@@ -23,6 +23,7 @@ html {
  */
 
 .page {
+  color: #474747;
   font: 1em/1.6em 'Roboto', sans-serif;
   margin: 0; /* 1 */
 }
