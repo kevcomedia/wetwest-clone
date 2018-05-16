@@ -293,6 +293,7 @@ html {
 .button_social_twitter {
   background-color: #333; /* 2 */
   border-color: #333; /* 2 */
+  color: #40b8ff;
   padding: .5em .4em; /* 1 */
 }
 
