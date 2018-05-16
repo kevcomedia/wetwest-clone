@@ -407,6 +407,14 @@ html {
 }
 
 /**
+ * Link styles for links on a dark background.
+ */
+
+.link_dark {
+  color: #40b8ff;
+}
+
+/**
  * Paragraphs and such.
  */
 
