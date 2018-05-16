@@ -574,3 +574,28 @@ html {
 .contact-form__submit {
   font-size: inherit;
 }
+
+/**
+ * 1. Input fields are dark with white text.
+ * 2. Space between input fields.
+ * 3. Transition for border color when focusing.
+ * 4. Input fields have the full with of their form.
+ */
+
+.contact-form__input {
+  background-color: #333; /* 1 */
+  border: 1px solid transparent;
+  color: #fff; /* 1 */
+  margin-bottom: 1em; /* 2 */
+  padding: .5em;
+  transition: border-color ease-in .2s; /* 3 */
+  width: 100%; /* 4 */
+}
+
+/**
+ * Light blue border on focus.
+ */
+
+.contact-form__input:focus {
+  border-color: #40b8ff;
+}
