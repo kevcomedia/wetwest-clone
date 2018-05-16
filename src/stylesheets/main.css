@@ -267,6 +267,12 @@
   background-color: #0069a8;
 }
 
+.button_dark {
+  background-color: #40b8ff;
+  border-color: #40b8ff;
+  font-weight: 700;
+}
+
 /**
  * Social media buttons.
  * 1. Make the button appear as square as possible.
