@@ -1,4 +1,12 @@
 
+/**
+ * Specify page-wide font size.
+ */
+
+html {
+  font-size: 14px;
+}
+
 /* LAYOUT */
 
 /**
@@ -15,7 +23,7 @@
  */
 
 .page {
-  font: 14px 'Roboto', sans-serif;
+  font: 1em/1.6em 'Roboto', sans-serif;
   margin: 0; /* 1 */
 }
 
@@ -39,6 +47,14 @@
   grid-row-gap: 5.7143em; /* 4 */
   padding-bottom: 5.7143em; /* 3 */
   padding-top: 5.7143em; /* 3 */
+}
+
+/**
+ * Row with reduced grid gaps.
+ */
+
+.row_gap_narrow {
+  grid-row-gap: 1.4286em;
 }
 
 /**
@@ -122,6 +138,28 @@
 }
 
 /**
+ * full-width makes the row item occupy the entirety of the row's width.
+ * That said, we'd like its contents to align with regular row content.
+ * 1. Inherit the row's display properties.
+ * 2. Span the entirety of the row's width.
+ */
+
+.row__footer_full-width {
+  display: inherit; /* 1 */
+  grid-column: full; /* 2 */
+  grid-template-columns: inherit; /* 1 */
+}
+
+/**
+ * Anything inside the full-width content must be placed in the contents
+ * column (to align with the usual row contents).
+ */
+
+.row__footer_full-width > * {
+  grid-column: content;
+}
+
+/**
  * Quick implementation of the ever-present 12-column grid. For now it's
  * only a one-breakpoint system.
  */
@@ -168,6 +206,16 @@
   }
 }
 
+/**
+ * Block for a container that might have two elements, on each far end
+ * of the container.
+ */
+
+.space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 /* COMMON BLOCKS */
 
@@ -267,6 +315,76 @@
   background-color: #0069a8;
 }
 
+.button_dark {
+  background-color: #40b8ff;
+  border-color: #40b8ff;
+  font-weight: 700;
+}
+
+/**
+ * Social media buttons.
+ * 1. Make the button appear as square as possible.
+ * 2. Dark background color.
+ */
+
+.button_social_dribbble,
+.button_social_facebook,
+.button_social_linkedin,
+.button_social_twitter {
+  background-color: #333; /* 2 */
+  border-color: #333; /* 2 */
+  color: #40b8ff;
+  padding: .5em .4em; /* 1 */
+}
+
+/**
+ * On focus, their background just go transparent.
+ */
+
+.button_social_dribbble:focus,
+.button_social_facebook:focus,
+.button_social_linkedin:focus,
+.button_social_twitter:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+
+/**
+ * Social media buttons appear white on hover.
+ */
+
+.button_social_dribbble:hover,
+.button_social_facebook:hover,
+.button_social_linkedin:hover,
+.button_social_twitter:hover {
+  color: #fff;
+}
+
+/**
+ * Their background colors match their brands' respective colors.
+ */
+
+.button_social_dribbble:hover {
+  background-color: #ea4c89;
+  border-color: #ea4c89;
+}
+
+.button_social_facebook:hover {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.button_social_linkedin:hover {
+  background-color: #0e76a8;
+  border-color: #0e76a8;
+}
+
+.button_social_twitter:hover {
+  background-color: #00acee;
+  border-color: #00acee;
+}
+
 /**
  * Flexbox might have been more appropriate instead of grid, but the grid
  * gap is appealing (instead of setting the gap on the buttons themselves).
@@ -281,6 +399,14 @@
   grid-auto-columns: min-content; /* 1 */
   grid-auto-flow: column; /* 2 */
   grid-gap: 1em;
+}
+
+/**
+ * Button list with narrower grid gaps.
+ */
+
+.button-list_gap-size_s {
+  grid-gap: .5em;
 }
 
 /**
@@ -322,6 +448,23 @@
 }
 
 /**
+ * Link styles for links on a dark background.
+ */
+
+.link_dark {
+  color: #40b8ff;
+}
+
+/**
+ * Links that use the same color as its parent element. Probably not a good
+ * idea in general.
+ */
+
+.link_blend {
+  color: inherit;
+}
+
+/**
  * Paragraphs and such.
  */
 
@@ -337,6 +480,57 @@
 .vertically-centered {
   align-items: center;
   display: flex;
+}
+
+/**
+ * Unbulleted unordered list with borders between list items.
+ * 1. Kill default left padding.
+ * 2. Make sure list has no bullets.
+ */
+
+.list {
+  list-style-type: none; /* 2 */
+  padding-left: 0; /* 1 */
+}
+
+/**
+ * 1. Border between list items.
+ * 2. Vertical padding between items, but no side padding.
+ */
+
+.list__item {
+  border-bottom: .0714em solid #333; /* 1 */
+  padding: 1em 0; /* 2 */
+}
+
+/**
+ * The last list item should have no bottom border.
+ */
+
+.list__item:last-child {
+  border-bottom: unset;
+}
+
+/**
+ * List item with an icon to the left.
+ * 1 .Align icon with text.
+ */
+
+.list__item_iconed {
+  align-items: baseline; /* 1 */
+  display: flex; /* 1 */
+}
+
+/**
+ * 1. Some space to the left and right of icon.
+ * 2. Prevent icon from shrinking if text needs more space (i.e., make sure
+ *    icons are aligned).
+ */
+
+.list__icon {
+  flex-shrink: 0; /* 2 */
+  margin-left: .5em; /* 1 */
+  margin-right: .5em; /* 1 */
 }
 
 
@@ -400,4 +594,88 @@
 .post__links {
   font-size: .8em; /* 1 */
   margin-bottom: 1.2em; /* 2 */
+}
+
+/**
+ * 1. The footer has a dark background.
+ * 2. Whitish text color.
+ * 3. Flush the footer content at the bottom of the page.
+ */
+
+.footer {
+  background-color: #1a1a1a; /* 1 */
+  color: #bcbcbc; /* 2 */
+  padding-bottom: 0; /* 3 */
+}
+
+/**
+ * 1. The footer headings have some bottom margin.
+ */
+
+.footer__heading {
+  color: #fff;
+  margin-bottom: 2em; /* 1 */
+}
+
+/**
+ * 1. Slightly ligher background color than footer.
+ */
+
+.footer__copywrite-banner {
+  background-color: #222; /* 1 */
+  color: #bcbcbc;
+  padding-bottom: 1.4286em;
+  padding-top: 1.4286em;
+}
+
+/**
+ * Kill copywrite banner text margins.
+ */
+
+.footer__copywrite,
+.footer__attribution {
+  margin: 0;
+}
+
+/**
+ * The contact form uses the root font-size. This is mostly for the input
+ * elements to inherit.
+ */
+
+.contact-form {
+  font-size: 1em;
+}
+
+/**
+ * Input elements inherit the form's font size.
+ */
+
+.contact-form__input,
+.contact-form__submit {
+  font-size: inherit;
+}
+
+/**
+ * 1. Input fields are dark with white text.
+ * 2. Space between input fields.
+ * 3. Transition for border color when focusing.
+ * 4. Input fields have the full with of their form.
+ */
+
+.contact-form__input {
+  background-color: #333; /* 1 */
+  border: 1px solid transparent;
+  color: #fff; /* 1 */
+  margin-bottom: 1em; /* 2 */
+  padding: .5em;
+  transition: border-color ease-in .2s; /* 3 */
+  width: 100%; /* 4 */
+}
+
+/**
+ * Light blue border on focus.
+ */
+
+.contact-form__input:focus {
+  border-color: #40b8ff;
 }
