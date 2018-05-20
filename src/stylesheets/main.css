@@ -1,0 +1,801 @@
+
+/**
+ * Specify page-wide font size.
+ */
+
+html {
+  font-size: 14px;
+}
+
+/* LAYOUT */
+
+/**
+ * Make sure all elements have easy-to-reason-with widths and heights.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * 1. Kill the default thin margin around the page. Violates BEM but we
+ *    have no choice.
+ */
+
+.page {
+  color: #474747;
+  font: 1em/1.6em 'Roboto', sans-serif;
+  margin: 0; /* 1 */
+}
+
+/**
+ * 1. Set up the row so it has gutters at least 1.1429em wide. The center
+ *    column will take up the most space until it's around 70em wide. After
+ *    that point the gutters will expand to take the remaining space.
+ * 2. Name the grid column lines for convenience.
+ * 3. Top and bottom padding for the row instead of empty grid rows as they
+ *    might mess up the layout when the row has more than one elements in
+ *    it.
+ * 4. Gaps between any section the row might contain.
+ */
+.row {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(1.1429em, 1fr)
+    [content-start] minmax(0, 69.8571em)
+    [content-end] minmax(1.1429em, 1fr)
+    [full-end]; /* 1, 2 */
+  grid-row-gap: 5.7143em; /* 4 */
+  padding-bottom: 5.7143em; /* 3 */
+  padding-top: 5.7143em; /* 3 */
+}
+
+/**
+ * Row with reduced grid gaps.
+ */
+
+.row_gap_narrow {
+  grid-row-gap: 1.4286em;
+}
+
+/**
+ * Row with 3/5 the usual padding.
+ */
+
+.row_padding_narrow {
+  padding-bottom: 3.4286em;
+  padding-top: 3.4286em;
+}
+
+/**
+ * Row with zero padding.
+ */
+
+.row_padding_none {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+/**
+ * Scale the background as needed.
+ */
+
+.row_background_road,
+.row_background_road-night,
+.row_background_light {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/**
+ * Make text legible on rows with dark backgrounds.
+ */
+
+.row_background_road,
+.row_background_road-night {
+  color: #fff;
+}
+
+/**
+ * 1. Set a uniform semitransparent gradient on top of the usual background
+ *    image, giving it a slightly dimmed effect. Note that this will break
+ *    on browsers that don't support linear-gradient.
+ * 2. The more prominent parts of the image are at the bottom.
+ */
+
+.row_background_road {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road.jpg'); /* 1 */
+  background-position: bottom; /* 2 */
+}
+
+/**
+ * 1. Same as above.
+ * 2. Center the background and size it just enough.
+ */
+
+.row_background_road-night {
+  background-image:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url('../images/road-night.jpg'); /* 1 */
+  background-position: center; /* 2 */
+}
+
+/**
+ * 1. Again same as above, but give a light effect.
+ */
+
+.row_background_light {
+  background-image:
+    linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
+    url('../images/architecture.jpg'); /* 1 */
+  background-position: bottom;
+}
+
+/**
+ * Place the row elements at the center.
+ */
+
+.row__header,
+.row__content {
+  grid-column: content-start / content-end;
+}
+
+.row__header_centered,
+.row__content_centered {
+  text-align: center;
+}
+
+/**
+ * full-width makes the row item occupy the entirety of the row's width.
+ * That said, we'd like its contents to align with regular row content.
+ * 1. Inherit the row's display properties.
+ * 2. Span the entirety of the row's width.
+ */
+
+.row__footer_full-width {
+  display: inherit; /* 1 */
+  grid-column: full; /* 2 */
+  grid-template-columns: inherit; /* 1 */
+}
+
+/**
+ * Anything inside the full-width content must be placed in the contents
+ * column (to align with the usual row contents).
+ */
+
+.row__footer_full-width > * {
+  grid-column: content;
+}
+
+/**
+ * Quick implementation of the ever-present 12-column grid. For now it's
+ * only a one-breakpoint system.
+ */
+
+.grid {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/**
+ * Any grid item should span the entire grid by default
+ * (i.e., mobile-first).
+ */
+
+.grid__item_col_1-2,
+.grid__item_col_1-3,
+.grid__item_col_1-4,
+.grid__item_col_3-4 {
+  grid-column: auto / span 12;
+}
+
+/**
+ * 1. Note to self: em units in media queries use the browser's font size
+ *    setting, not any font size on the page (usually 16px by default;
+ *    so below triggers around at least 750px).
+ */
+
+@media screen and (min-width: 46.875em) { /* 1 */
+  .grid__item_col_1-2 {
+    grid-column: auto / span 6;
+  }
+
+  .grid__item_col_1-3 {
+    grid-column: auto / span 4;
+  }
+
+  .grid__item_col_1-4 {
+    grid-column: auto / span 3;
+  }
+
+  .grid__item_col_3-4 {
+    grid-column: auto / span 9;
+  }
+}
+
+/**
+ * Block for a container that might have two elements, on each far end
+ * of the container.
+ */
+
+.space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* COMMON BLOCKS */
+
+/**
+ * Images for display purposes.
+ * 1. Maintain image aspect ratio.
+ * 2. Horizontally center image in its container.
+ * 3. The image can only get as large as its actual width.
+ */
+
+.block-image {
+  display: block;
+  height: auto; /* 1 */
+  margin: auto; /* 2 */
+  max-width: 100%; /* 3 */
+}
+
+/**
+ * 1. Inline-block makes sense for a button.
+ * 2. Transition colors on hover/focus.
+ * 3. A nice blue color.
+ */
+
+.button {
+  background-color: #0069a8; /* 3 */
+  border: 0.0714em solid #0069a8; /* 3 */
+  color: #fff;
+  display: inline-block; /* 1 */
+  padding: .8em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all ease-in .2s; /* 2 */
+}
+
+/**
+ * A variation of the button with some top margin. I don't know if a modifier
+ * can change a block's margin in BEM.
+ */
+
+.button_top-margin {
+  margin-top: 1em;
+}
+
+/**
+ * 1. Focused and hovered buttons are transparent.
+ * 2. Text color becomes the same as default text color.
+ */
+
+.button:focus,
+.button:hover {
+  background-color: transparent; /* 1 */
+  color: #474747; /* 2 */
+}
+
+/**
+ * Hovering changes border color to the text color. Focusing
+ * keeps the blue border.
+ */
+
+.button:hover {
+  border-color: #474747;
+}
+
+/**
+ * button_inverse is just a button with the default and hover appearances
+ * swapped. It uses the same focus styles.
+ */
+
+.button_inverse {
+  background-color: transparent;
+  border: .0714em solid #fff;
+}
+
+/**
+ * button_on-background is for a button that is used in a row with
+ * background images. Their hover state makes them white for legibility.
+ */
+
+.button_inverse:focus,
+.button_inverse:hover,
+.button_on-background:focus,
+.button_on-background:hover {
+  color: #fff;
+}
+
+.button_inverse:focus,
+.button_inverse:hover,
+.button_on-background:focus {
+  border-color: #0069a8;
+}
+
+.button_on-background:hover {
+  border-color: #fff;
+}
+
+.button_inverse:hover {
+  background-color: #0069a8;
+}
+
+.button_dark {
+  background-color: #40b8ff;
+  border-color: #40b8ff;
+  font-weight: 700;
+}
+
+/**
+ * Social media buttons.
+ * 1. Make the button appear as square as possible.
+ * 2. Dark background color.
+ */
+
+.button_social_dribbble,
+.button_social_facebook,
+.button_social_linkedin,
+.button_social_twitter {
+  background-color: #333; /* 2 */
+  border-color: #333; /* 2 */
+  color: #40b8ff;
+  padding: .5em .4em; /* 1 */
+}
+
+/**
+ * On focus, their background just go transparent.
+ */
+
+.button_social_dribbble:focus,
+.button_social_facebook:focus,
+.button_social_linkedin:focus,
+.button_social_twitter:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+
+/**
+ * Social media buttons appear white on hover.
+ */
+
+.button_social_dribbble:hover,
+.button_social_facebook:hover,
+.button_social_linkedin:hover,
+.button_social_twitter:hover {
+  color: #fff;
+}
+
+/**
+ * Their background colors match their brands' respective colors.
+ */
+
+.button_social_dribbble:hover {
+  background-color: #ea4c89;
+  border-color: #ea4c89;
+}
+
+.button_social_facebook:hover {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.button_social_linkedin:hover {
+  background-color: #0e76a8;
+  border-color: #0e76a8;
+}
+
+.button_social_twitter:hover {
+  background-color: #00acee;
+  border-color: #00acee;
+}
+
+/**
+ * Flexbox might have been more appropriate instead of grid, but the grid
+ * gap is appealing (instead of setting the gap on the buttons themselves).
+ * 1. Auto-generate columns for each button. Make sure the column is only
+ *    as wide as it needs.
+ * 2. Make sure buttons fill the grid column-first (as opposed to the
+ *    default row-first).
+ */
+
+.button-list {
+  display: grid;
+  grid-auto-columns: min-content; /* 1 */
+  grid-auto-flow: column; /* 2 */
+  grid-gap: 1em;
+}
+
+/**
+ * Button list with narrower grid gaps.
+ */
+
+.button-list_gap-size_s {
+  grid-gap: .5em;
+}
+
+/**
+ * 1. Set standard heading size and style.
+ * 2. Remove top margin. Again a BEM violation, but it makes things easier
+ *    to reason about. I might do the same for paragraphs.
+ * 3. I realized the headings also don't have bottom margins.
+ */
+
+.heading {
+  font: italic 1.5714em Georgia, 'Times New Roman', serif; /* 1 */
+  margin-bottom: 0; /* 3 */
+  margin-top: 0; /* 2 */
+}
+
+.heading_size_xs {
+  font-size: 1.2em;
+}
+
+.heading_size_s {
+  font-size: 1.2857em;
+}
+
+.heading_size_l {
+  font-size: 1.8571em;
+}
+
+.heading_size_xl {
+  font-size: 2.8571em;
+}
+
+/**
+ * Standard (non-button-looking) link styles.
+ */
+
+.link {
+  color: #0069a8;
+  text-decoration: none;
+}
+
+/**
+ * Link styles for links on a dark background.
+ */
+
+.link_dark {
+  color: #40b8ff;
+}
+
+/**
+ * Link styles for links on a blue background.
+ */
+
+.link_blue {
+  color: #fff;
+}
+
+/**
+ * Links that use the same color as its parent element. Probably not a good
+ * idea in general.
+ */
+
+.link_blend {
+  color: inherit;
+}
+
+/**
+ * Paragraphs and such.
+ */
+
+.prose {
+  line-height: 1.5em;
+  margin-top: 0;
+}
+
+/**
+ * Container where contents are vertically centered
+ */
+
+.vertically-centered {
+  align-items: center;
+  display: flex;
+}
+
+/**
+ * Unbulleted unordered list with borders between list items.
+ * 1. Kill default left padding.
+ * 2. Make sure list has no bullets.
+ */
+
+.list {
+  list-style-type: none; /* 2 */
+  padding-left: 0; /* 1 */
+}
+
+/**
+ * 1. Border between list items.
+ * 2. Vertical padding between items, but no side padding.
+ */
+
+.list__item {
+  border-bottom: .0714em solid #333; /* 1 */
+  padding: 1em 0; /* 2 */
+}
+
+/**
+ * The last list item should have no bottom border.
+ */
+
+.list__item:last-child {
+  border-bottom: unset;
+}
+
+/**
+ * List item with an icon to the left.
+ * 1 .Align icon with text.
+ */
+
+.list__item_iconed {
+  align-items: baseline; /* 1 */
+  display: flex; /* 1 */
+}
+
+/**
+ * 1. Some space to the left and right of icon.
+ * 2. Prevent icon from shrinking if text needs more space (i.e., make sure
+ *    icons are aligned).
+ */
+
+.list__icon {
+  flex-shrink: 0; /* 2 */
+  margin-left: .5em; /* 1 */
+  margin-right: .5em; /* 1 */
+}
+
+
+/* FEATURE BLOCKS (for the lack of a better term) */
+
+/**
+ * 1. Top and bottom padding for the jumbotron itself.
+ */
+
+.jumbotron {
+  padding-bottom: 5em; /* 1 */
+  padding-top: 5em; /* 1 */
+}
+
+/**
+ * Some bottom margin for the jumbotron title and subtitle.
+ */
+
+.jumbotron__title,
+.jumbotron__subtitle {
+  margin-bottom: 1em;
+}
+
+/**
+ * Bottom margin for the tagline.
+ */
+
+.jumbotron__tagline {
+  margin-bottom: 5em;
+}
+
+.post__cover {
+  margin-bottom: 2em;
+}
+
+/**
+ * 1. Content can only get as large as the cover image (though this assumes
+ *    the cover image is around 320px wide. It will probably break when the
+ *    page's font-size is changed).
+ * 2. Center the content horizontally.
+ */
+
+.post__content {
+  margin: auto; /* 2 */
+  max-width: 22.8751em; /* 1 */
+}
+
+/**
+ * Some space between it and post links below.
+ */
+
+.post__title {
+  margin-bottom: .25em;
+}
+
+/**
+ * 1. Post link text is slightly smaller.
+ * 2. Some space between it and the post text below.
+ */
+
+.post__links {
+  font-size: .8em; /* 1 */
+  margin-bottom: 1.2em; /* 2 */
+}
+
+/**
+ * 1. The footer has a dark background.
+ * 2. Whitish text color.
+ * 3. Flush the footer content at the bottom of the page.
+ */
+
+.footer {
+  background-color: #1a1a1a; /* 1 */
+  color: #bcbcbc; /* 2 */
+  padding-bottom: 0; /* 3 */
+}
+
+/**
+ * 1. The footer headings have some bottom margin.
+ */
+
+.footer__heading {
+  color: #fff;
+  margin-bottom: 2em; /* 1 */
+}
+
+/**
+ * 1. Slightly ligher background color than footer.
+ */
+
+.footer__copyright-banner {
+  background-color: #222; /* 1 */
+  color: #bcbcbc;
+  padding-bottom: 1.4286em;
+  padding-top: 1.4286em;
+}
+
+/**
+ * Kill copyright banner text margins.
+ */
+
+.footer__copyright,
+.footer__attribution {
+  margin: 0;
+}
+
+/**
+ * The contact form uses the root font-size. This is mostly for the input
+ * elements to inherit.
+ */
+
+.contact-form {
+  font-size: 1em;
+}
+
+/**
+ * Input elements inherit the form's font size.
+ */
+
+.contact-form__input,
+.contact-form__submit {
+  font-size: inherit;
+}
+
+/**
+ * 1. Input fields are dark with white text.
+ * 2. Space between input fields.
+ * 3. Transition for border color when focusing.
+ * 4. Input fields have the full with of their form.
+ */
+
+.contact-form__input {
+  background-color: #333; /* 1 */
+  border: 1px solid transparent;
+  color: #fff; /* 1 */
+  margin-bottom: 1em; /* 2 */
+  padding: .5em;
+  transition: border-color ease-in .2s; /* 3 */
+  width: 100%; /* 4 */
+}
+
+/**
+ * Light blue border on focus.
+ */
+
+.contact-form__input:focus {
+  border-color: #40b8ff;
+}
+
+.navbar {
+  background-color: #0069a8;
+}
+
+.navbar__collapse-toggler,
+.navbar__link {
+  text-transform: uppercase;
+  transition: color ease-in .2s;
+}
+
+/**
+ * 1. Same background color as navbar.
+ * 2. Same font as navbar.
+ */
+
+.navbar__collapse-toggler {
+  background-color: inherit; /* 1 */
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit; /* 2 */
+  padding: 1em 0;
+}
+
+/**
+ * 1. Add vertical padding.
+ */
+
+.navbar__link {
+  display: block; /* 1 */
+  padding: .5em 0; /* 1 */
+}
+
+.navbar__collapse-toggler:focus,
+.navbar__collapse-toggler:hover,
+.navbar__link:hover,
+.navbar__link_active {
+  color: #40b8ff;
+}
+
+/**
+ * 1. Remove default list left padding.
+ * 2. Remove default vertical margins.
+ * 3. Not sure if necessary, but just for good measure.
+ * 4. Not displayed by default.
+ */
+
+.navbar__list {
+  display: none; /* 4 */
+  list-style-type: none; /* 3 */
+  margin: 0; /* 2 */
+  padding-left: 0; /* 1 */
+}
+
+/**
+ * Show list as a vertical column when active.
+ */
+
+.navbar__list_active {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 46.875em) {
+  /**
+   * Hide the toggler button.
+   */
+  .navbar__collapse-toggler {
+    display: none;
+  }
+
+  /**
+   * Lay the navbar links in a row.
+   */
+
+  .navbar__list,
+  .navbar__list_active {
+    display: flex;
+    flex-direction: row;
+  }
+
+  /**
+   * Put some space between navbar items.
+   */
+
+  .navbar__item {
+    margin-right: 2em;
+  }
+
+  .navbar__item:last-child {
+    margin-right: 0;
+  }
+
+  /**
+   * Increase link vertical padding so the navbar doesn't look too thin.
+   */
+
+  .navbar__link {
+    padding: 1em 0;
+  }
+}
