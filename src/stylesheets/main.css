@@ -68,6 +68,15 @@ html {
 }
 
 /**
+ * Row with zero padding.
+ */
+
+.row_padding_none {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+/**
  * Scale the background as needed.
  */
 
@@ -457,6 +466,14 @@ html {
 }
 
 /**
+ * Link styles for links on a blue background.
+ */
+
+.link_blue {
+  color: #fff;
+}
+
+/**
  * Links that use the same color as its parent element. Probably not a good
  * idea in general.
  */
@@ -679,4 +696,106 @@ html {
 
 .contact-form__input:focus {
   border-color: #40b8ff;
+}
+
+.navbar {
+  background-color: #0069a8;
+}
+
+.navbar__collapse-toggler,
+.navbar__link {
+  text-transform: uppercase;
+  transition: color ease-in .2s;
+}
+
+/**
+ * 1. Same background color as navbar.
+ * 2. Same font as navbar.
+ */
+
+.navbar__collapse-toggler {
+  background-color: inherit; /* 1 */
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: inherit; /* 2 */
+  padding: 1em 0;
+}
+
+/**
+ * 1. Add vertical padding.
+ */
+
+.navbar__link {
+  display: block; /* 1 */
+  padding: .5em 0; /* 1 */
+}
+
+.navbar__collapse-toggler:focus,
+.navbar__collapse-toggler:hover,
+.navbar__link:hover,
+.navbar__link_active {
+  color: #40b8ff;
+}
+
+/**
+ * 1. Remove default list left padding.
+ * 2. Remove default vertical margins.
+ * 3. Not sure if necessary, but just for good measure.
+ * 4. Not displayed by default.
+ */
+
+.navbar__list {
+  display: none; /* 4 */
+  list-style-type: none; /* 3 */
+  margin: 0; /* 2 */
+  padding-left: 0; /* 1 */
+}
+
+/**
+ * Show list as a vertical column when active.
+ */
+
+.navbar__list_active {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 46.875em) {
+  /**
+   * Hide the toggler button.
+   */
+  .navbar__collapse-toggler {
+    display: none;
+  }
+
+  /**
+   * Lay the navbar links in a row.
+   */
+
+  .navbar__list,
+  .navbar__list_active {
+    display: flex;
+    flex-direction: row;
+  }
+
+  /**
+   * Put some space between navbar items.
+   */
+
+  .navbar__item {
+    margin-right: 2em;
+  }
+
+  .navbar__item:last-child {
+    margin-right: 0;
+  }
+
+  /**
+   * Increase link vertical padding so the navbar doesn't look too thin.
+   */
+
+  .navbar__link {
+    padding: 1em 0;
+  }
 }
